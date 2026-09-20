@@ -13,6 +13,7 @@ import {
 import { MobileHeader } from './components/MobileHeader';
 import { HabitCard } from './components/HabitCard';
 import { TodayView } from './components/views/TodayView';
+import { TrackerEmptyState } from './components/views/TrackerEmptyState';
 import { HabitModal } from './components/HabitModal';
 import { HabitStackTimelineView } from './components/HabitStackTimelineView';
 import { BottomNav, TabType } from './components/BottomNav';
