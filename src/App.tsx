@@ -653,23 +653,45 @@ export default function App() {
             )}
 
             {activeTab === 'matrix' && (
-              <WeeklyOverview
-                habits={habits}
-                weekDays={weeklyDays}
-                onToggleDate={(id, date) => handleToggleDate(id, date)}
-              />
+              habits.length === 0 ? (
+                <TrackerEmptyState
+                  onOpenPackModal={() => setIsPackModalOpen(true)}
+                  onAddManual={() => {
+                    setEditingHabit(null);
+                    setPreselectedParentHabitId(undefined);
+                    setIsModalOpen(true);
+                  }}
+                />
+              ) : (
+                <WeeklyOverview
+                  habits={habits}
+                  weekDays={weeklyDays}
+                  onToggleDate={(id, date) => handleToggleDate(id, date)}
+                />
+              )
             )}
 
             {activeTab === 'stats' && (
-              <StatsView
-                habits={habits}
-                onSelectDate={(dateStr) => {
-                  setSelectedDateStr(dateStr);
-                  setActiveTab('tracker');
-                  showToast(`Melihat tanggal ${dateStr}`);
-                }}
-                moodMap={moodMap}
-              />
+              habits.length === 0 ? (
+                <TrackerEmptyState
+                  onOpenPackModal={() => setIsPackModalOpen(true)}
+                  onAddManual={() => {
+                    setEditingHabit(null);
+                    setPreselectedParentHabitId(undefined);
+                    setIsModalOpen(true);
+                  }}
+                />
+              ) : (
+                <StatsView
+                  habits={habits}
+                  onSelectDate={(dateStr) => {
+                    setSelectedDateStr(dateStr);
+                    setActiveTab('tracker');
+                    showToast(`Melihat tanggal ${dateStr}`);
+                  }}
+                  moodMap={moodMap}
+                />
+              )
             )}
 
             {activeTab === 'settings' && (
